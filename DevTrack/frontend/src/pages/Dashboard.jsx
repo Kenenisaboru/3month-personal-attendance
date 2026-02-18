@@ -11,6 +11,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import '../App.css';
 
 ChartJS.register(
     CategoryScale,
@@ -49,29 +50,29 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-8 text-gray-800">Dashboard</h1>
+        <div className="container">
+            <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '2rem' }}>Dashboard</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
-                    <h3 className="text-gray-500 text-sm font-medium uppercase">Total Days Present</h3>
-                    <p className="text-3xl font-bold text-gray-900 mt-2">{totalPresent} Days</p>
+            <div className="grid grid-cols-3 mb-8">
+                <div className="card blue">
+                    <h3 className="card-title">Total Days Present</h3>
+                    <p className="card-value">{totalPresent} Days</p>
                 </div>
-                <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500">
-                    <h3 className="text-gray-500 text-sm font-medium uppercase">Total Hours Worked</h3>
-                    <p className="text-3xl font-bold text-gray-900 mt-2">{totalHours} Hours</p>
+                <div className="card green">
+                    <h3 className="card-title">Total Hours Worked</h3>
+                    <p className="card-value">{totalHours} Hours</p>
                 </div>
-                <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-purple-500">
-                    <h3 className="text-gray-500 text-sm font-medium uppercase">Recent Activity</h3>
-                    <p className="text-gray-600 mt-2 text-sm">
+                <div className="card purple">
+                    <h3 className="card-title">Recent Activity</h3>
+                    <p style={{ marginTop: '0.5rem', color: 'var(--text-secondary)' }}>
                         {activities.length > 0 ? activities[0].title : 'No recent activity'}
                     </p>
                 </div>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-                <h2 className="text-xl font-bold mb-4 text-gray-800">Overview</h2>
-                <div className="h-64">
+            <div className="card">
+                <h2 className="text-xl font-bold mb-4">Overview</h2>
+                <div style={{ height: '300px' }}>
                     <Bar options={{ responsive: true, maintainAspectRatio: false }} data={chartData} />
                 </div>
             </div>
